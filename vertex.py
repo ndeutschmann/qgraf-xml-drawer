@@ -16,6 +16,7 @@ class Vertex:
             self.type=element.find("type").text
             self.types=element.find("type").text.split(",")
             self.fields=element.find("fields").text.split(",")
+            self.id=element.find("id").text
             for i in range(0,len(self.fields)):
                 if int(self.fields[i])<0:
                     self.fields[i]="ext"+str(-int(self.fields[i]))
@@ -49,7 +50,7 @@ class Vertex:
             file.write("m{})*Denom({},m{})*d_(col{},col{})".format(self.types[1],self.momenta[1],self.types[1],self.fields[1],int(self.fields[1])+1))
 
     def __contains__(self,f):
-        return f in self.fields
+        f in self.fields
 
     def output(self,file,line=1):
         if self.type=="tbar,t,g":

@@ -3,8 +3,8 @@ from xml.etree.ElementTree import *
 from xml.etree.ElementInclude import *
 import re
 import sys
+from propagator import *
 from vertex import *
-from line import*
 
 graphs=XML(default_loader("grafs",parse))
 diagrams=graphs.find("diagrams")
@@ -15,47 +15,58 @@ file = open("diagrams.tex","w+")
 
 for diagram in diagrams.getchildren():
     DiagID = diagram.find("id").text
-    file.write(DiagID+"~\\feynmandiagram[horizontal = Hext2 to mid,small]{\n")
-    file.write("{} -- [ opacity = 0 ] {} ,\n".format("gext1","mid"))
-    file.write("{} -- [ opacity = 0 ] {} ,\n".format("gext3","mid"))
+    print "Doing diagram: "+DiagID
+    file.write(DiagID+"~\\feynmandiagram[small]{\n")
+    NOpropagators=diagram.find("propagators").getchildren()
     NOvertices=diagram.find("vertices").getchildren()
-    propagators=diagram.find("propagators").getchildren()
-
+    propagators=[]
+    for p in NOpropagators:
+        propagators.append(propagator(p))
     vertices=[]
-
     for v in NOvertices:
         vertices.append(Vertex(v))
-    for v in vertices:
-        f = v.fields
-        id = "V"+("".join(f))
-        print "vertex: "+id
-        t = v.types
-        for i in range(len(f)): #LOOP OVER PROPS IN V
-            if re.search('[a-zA-Z]',f[i]):
-                file.write("{} -- [ {} ] {}{} ,\n".format(id,pt[t[i]],t[i],f[i]))
+    bundles = []
+    for p in propagators:
+        if len(bundles) > 0:
+            found = False
+            for b in bundles:
+                if p.fromto == b[0].fromto:
+                    print "adding my propagator to an existing bundle"
+                    b.append(p)
+                    found = True
+                    break
+            if not found:
+                bundles.append([p])
+        else:
+            bundles = [[p]]
+    for b in bundles:
+        if len(b)==1:
+            b[0].texprint(file,pt)
+        if len(b)==2:
+            shapedict = ["quarter right", "quarter left"]
+
+            b[0].texprint(file,pt,shapedict[0])
+            if b[1].vfrom == b[0].vfrom:
+                b[1].texprint(file,pt,shapedict[1])
             else:
-                if not (int(f[i])%2): #IF OUTGOING #NEED TO DO SOMETHING ABOUT EXTERNALS
-                    found = False
-                    for w in vertices:#FIND CONNECTED VERTEX
-                        if str(int(f[i])-1) in w:
-                            found = True
-                            wid = "V"+("".join(w.fields))
-                            break
-                    if not found:
-                        print "Error"
-                    else:
-                        shape = ""
-                        if str(int(f[i])-1) in v:
-                            shape="half right"
-                            if id!=wid:
-                                print "PB"
-                            wid+="tad"
-                            file.write("{} -- [ {}, {} ] {} ,\n".format(wid,pt[t[i]],shape,id))
-                        if shape=="":
-                            for wf in w.fields:
-                                if not re.search('[a-zA-Z]',wf):
-                                    if str(int(wf)-1) in v:
-                                        shape = "quarter right"
-                                        break
-                        file.write("{} -- [ {}, {} ] {} ,\n".format(id,pt[t[i]],shape,wid))
+                b[1].texprint(file,pt,shapedict[0])
+        if len(b)==3:
+            shapedict = ["quarter right", "quarter left"]
+            b[0].texprint(file,pt,shapedict[0])
+            if b[1].vfrom == b[0].vfrom:
+                b[1].texprint(file,pt,shapedict[1])
+            else:
+                b[1].texprint(file,pt,shapedict[0])
+            b[2].texprint(file,pt)
+        if len(b)>4:
+            print "I don't know how to deal with this !"
+
+    for v in vertices:
+        for i in range(len(v.fields)):
+            if re.search('[a-zA-Z]',v.fields[i]):
+                file.write("{} -- [{}] {},\n".format(v.fields[i],pt[v.types[i]],v.id))
+#
+#    file.write("ext1 -- [opacity = 0] mid,\n") add a comma above !
+#    file.write("ext3 -- [opacity = 0] mid\n")
+    file.write("q -- [opacity = 0] q\n")
     file.write("};\n")

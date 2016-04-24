@@ -1,0 +1,90 @@
+% ***********************************************************
+% ******************* NICO's HEADER **********************
+% ***********************************************************
+
+
+%====================================
+%Packages
+%====================================
+\documentclass[11pt]{article}
+\usepackage{amsmath} % AMS Math Package
+\usepackage{amsthm} % Theorem Formatting
+\usepackage{amssymb}	% Math symbols such as \mathbb
+\usepackage{graphicx} % Allows for eps images
+\usepackage{multicol} % Allows for multiple columns
+\usepackage[squaren,Gray]{SIunits}
+\usepackage{subfigure}
+\usepackage{multirow}
+\usepackage{makecell}
+\usepackage{tikz-feynman}
+\usepackage[textsize=tiny,backgroundcolor=white]{todonotes}
+
+
+%====================================
+%Definitions
+%====================================
+\unitlength = 1mm
+\graphicspath{ {img/} }
+\makeatletter
+\def\input@path{ {content/}}
+\makeatother
+
+
+%====================================
+%Commands
+%====================================
+\let\vaccent=\v % rename builtin command \v{} to \vaccent{}
+
+\renewcommand{\v}[1]{\ensuremath{\mathbf{#1}}} % bold vectors
+
+\newcommand{\gv}[1]{\ensuremath{\mbox{\boldmath$ #1 $}}}
+% bold vectors of Greek letters
+\newcommand{\uv}[1]{\ensuremath{\mathbf{\hat{#1}}}} % for unit vector
+\newcommand{\abs}[1]{\left| #1 \right|} % for absolute value
+\newcommand{\avg}[1]{\left< #1 \right>} % for average
+\let\underdot=\d % rename builtin command \d{} to \underdot{}
+\renewcommand{\d}[2]{\frac{d #1}{d #2}} % for derivatives
+\newcommand{\dd}[2]{\frac{d^2 #1}{d #2^2}} % for double derivatives
+\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
+% for partial derivatives
+\newcommand{\pdd}[2]{\frac{\partial^2 #1}{\partial #2^2}}
+% for double partial derivatives
+\newcommand{\pdc}[3]{\left( \frac{\partial #1}{\partial #2}
+ \right)_{#3}} % for thermodynamic partial derivatives
+\newcommand{\ket}[1]{\left| #1 \right>} % for Dirac bras
+\newcommand{\bra}[1]{\left< #1 \right|} % for Dirac kets
+\newcommand{\braket}[2]{\left< #1 \vphantom{#2} \right|
+ \left. #2 \vphantom{#1} \right>} % for Dirac brackets
+\newcommand{\matrixel}[3]{\left< #1 \vphantom{#2#3} \right|
+ #2 \left| #3 \vphantom{#1#2} \right>} % for Dirac matrix elements
+\newcommand{\grad}[1]{\gv{\nabla} #1} % for gradient
+\let\divsymb=\div % rename builtin command \div to \divsymb
+\renewcommand{\div}[1]{\gv{\nabla} \cdot #1} % for divergence
+\newcommand{\curl}[1]{\gv{\nabla} \times #1} % for curl
+\let\baraccent=\= % rename builtin command \= to \baraccent
+\renewcommand{\=}[1]{\stackrel{#1}{=}} % for putting numbers above =
+\newtheorem{prop}{Proposition}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\theoremstyle{definition}
+\newtheorem{dfn}{Definition}
+\newtheorem*{rst}{Result}
+\theoremstyle{remark}
+\newtheorem*{rmk}{Remark}
+
+\newcommand{\gev}[1]{$\unit{#1}{\giga\electronvolt}$}
+\newcommand{\tev}[1]{$\unit{#1}{\tera\electronvolt}$}
+
+\newcommand{\gevm}[1]{\unit{#1}{\giga\electronvolt}}
+\newcommand{\tevm}[1]{\unit{#1}{\tera\electronvolt}}
+
+\newcommand{\half}{$\frac{1}{2}$}
+
+\newcommand{\ddk}[1]{\frac{d^d k_{#1}}{(4\pi)^d}}
+\newcommand{\sidenote}[1]{\todo[noline]{#1}}
+
+\newcommand{\prog}[1]{\texttt{#1}}
+
+% ***********************************************************
+% ********************** END HEADER *************************
+% ***********************************************************
