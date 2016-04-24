@@ -1,1 +1,2 @@
-#QGRAF Diagram Drawer
+QGRAF Diagram Drawer
+=====================
