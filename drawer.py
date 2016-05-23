@@ -5,6 +5,7 @@ import re
 import sys
 from propagator import *
 from vertex import *
+from copy import copy
 
 graphs=XML(default_loader("grafs",parse))
 diagrams=graphs.find("diagrams")
@@ -41,7 +42,16 @@ for diagram in diagrams.getchildren():
             bundles = [[p]]
     for b in bundles:
         if len(b)==1:
-            b[0].texprint(file,pt)
+            if b[0].vfrom != b[0].vto:
+                b[0].texprint(file,pt)
+            else: #TADPOLE
+                tadfrom = copy(b[0])
+                tadto = copy(b[0])
+                tadfrom.vto = "tad"+tadfrom.id
+                tadto.vfrom = "tad"+tadfrom.id
+                shape = "half right"
+                tadfrom.texprint(file,pt,shape)
+                tadto.texprint(file,pt,shape)
         if len(b)==2:
             shapedict = ["quarter right", "quarter left"]
 
