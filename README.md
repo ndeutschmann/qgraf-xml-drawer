@@ -1,6 +1,8 @@
 # QGRAF Diagram Drawer
 An actual documentation will come in the future.
 
+This code uses [QGRAF](http://cfif.ist.utl.pt/~paulo/qgraf.html) and [tikz-feynman](https://github.com/JP-Ellis/tikz-feynman)
+
 ## Citing
 
 This code is citeable using the following DOI:
