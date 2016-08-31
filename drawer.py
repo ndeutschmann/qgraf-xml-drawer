@@ -10,7 +10,7 @@ from copy import copy
 graphs=XML(default_loader("grafs",parse))
 diagrams=graphs.find("diagrams")
 
-pt = {"g": "gluon", "t": "fermion", "tbar": "fermion","H": "scalar"}
+pt = {"g": "gluon", "t": "fermion", "tbar": "fermion","h": "scalar"}
 
 file = open("diagrams.tex","w+")
 
@@ -74,7 +74,7 @@ for diagram in diagrams.getchildren():
     for v in vertices:
         for i in range(len(v.fields)):
             if re.search('[a-zA-Z]',v.fields[i]):
-                file.write("{} -- [{}] {},\n".format(v.fields[i],pt[v.types[i]],v.id))
+                file.write("{} [particle={}] -- [{}] {},\n".format(v.fields[i],v.fields[i],pt[v.types[i]],v.id))
 #
 #    file.write("ext1 -- [opacity = 0] mid,\n") add a comma above !
 #    file.write("ext3 -- [opacity = 0] mid\n")
