@@ -1,0 +1,70 @@
+<prologue>
+<<qgraf>>
+<<version>><program><</version>>
+<<input>> <command_loop><command_line_loop><command_data><back><end><end>
+<back><</input>>
+<<diagrams>>
+<diagram>
+  <back>
+<<diagram>>
+
+ <<id>><diagram_index><</id>>
+ <<defdata>>
+  <<incoming>>
+  <legs_in>
+  <</incoming>>
+  <<outgoing>>
+  <legs_out>
+  <</outgoing>>
+ <</defdata>>
+ <<signsym>><sign><symmetry_factor><</signsym>>
+
+ <<legs>>
+<in_loop>
+<back>  <<leg>>
+   <<field>><field><</field>>
+   <<momentum>><momentum><</momentum>>
+   <<status>>in<</status>>
+   <<id>><field_index><</id>>
+  <</leg>>
+<end><back>
+<out_loop>
+<back>  <<leg>>
+   <<field>><field><</field>>
+   <<momentum>><momentum><</momentum>>
+   <<status>>out<</status>>
+   <<id>><field_index><</id>>
+  <</leg>>
+<end><back>
+ <</legs>>
+
+ <<propagators>>
+<propagator_loop>
+<back>  <<propagator>>
+   <<mass>>m<field><</mass>>
+   <<momentum>><momentum><</momentum>>
+   <<field>><field><</field>>
+   <<id>><propagator_index><</id>>
+   <<from>><dual-vertex_index><</from>>
+   <<to>><vertex_index><</to>>
+  <</propagator>>
+<end><back>
+ <</propagators>>
+
+ <<vertices>>
+<vertex_loop>
+<back>  <<vertex>>
+   <<id>><vertex_index><</id>>   
+   <<type>><ray_loop><field>,<end><back><</type>>
+   <<fields>><ray_loop><field_index>,<end><back><</fields>>
+   <<momenta>><ray_loop><momentum>,<end><back><</momenta>>
+  <</vertex>>
+<end><back>
+ <</vertices>>
+
+<back><</diagram>>
+<epilogue>
+<</diagrams>>
+<</qgraf>>
+
+<exit>
