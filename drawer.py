@@ -1,4 +1,3 @@
-#!/Library/Frameworks/Python.framework/Versions/2.7/bin/python
 from xml.etree.ElementTree import *
 from xml.etree.ElementInclude import *
 import re
