@@ -6,10 +6,13 @@ from propagator import *
 from vertex import *
 from copy import copy
 
-graphs=XML(default_loader("grafs",parse))
+INPUT="grafs" #QGRAF output file
+graphs=XML(default_loader(INPUT,parse))
 diagrams=graphs.find("diagrams")
 
-pt = {"g": "gluon", "t": "fermion", "tbar": "fermion","h": "scalar"}
+#Particle dictionnary. Adapt this to your model
+pt = {"g": "gluon", "t": "fermion", "tbar": "fermion","H": "scalar"}
+
 
 file = open("diagrams.tex","w+")
 
