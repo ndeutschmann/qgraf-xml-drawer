@@ -72,6 +72,7 @@ for diagram in diagrams.getchildren():
             b[2].texprint(file,pt)
         if len(b)>4:
             print "I don't know how to deal with this !"
+            raise ValueError('Too many propagators in a bundle')
 
     for v in vertices:
         for i in range(len(v.fields)):
