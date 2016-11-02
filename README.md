@@ -15,6 +15,7 @@ The user is required to modify the code to adapt it to their situation.
 
 Once this is defined, run the code using `python drawer.py` and compile the output using `lualatex main.tex`. The diagrams ared drawn in `main.pdf`.
 
+
 ## Limitations
 
 The code is designed to make loop diagrams look nice. At the moment, it returns a `ValueError` if two vertices are joined by 4 or more propagators.
