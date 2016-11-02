@@ -23,4 +23,4 @@ The code is designed to make loop diagrams look nice. At the moment, it returns 
 
 This code is citeable using the following DOI:
 
-[![DOI](https://zenodo.org/badge/22973/ndeutschmann/qgraf-xml-drawer.svg)](https://zenodo.org/badge/latestdoi/22973/ndeutschmann/qgraf-xml-drawer)
+[![DOI](https://zenodo.org/badge/59492920.svg)](https://zenodo.org/badge/latestdoi/59492920)
