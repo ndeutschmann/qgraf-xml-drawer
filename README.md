@@ -24,4 +24,4 @@ The code is designed to make loop diagrams look nice. At the moment, it returns 
 
 This code is citeable using the following DOI:
 
-[![DOI](https://zenodo.org/badge/59492920.svg)](https://zenodo.org/badge/latestdoi/59492920)
+[![DOI](https://zenodo.org/badge/59492920.svg?maxAge=0)](https://zenodo.org/badge/latestdoi/59492920)
