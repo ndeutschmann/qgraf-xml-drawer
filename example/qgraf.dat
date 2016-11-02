@@ -1,0 +1,19 @@
+output = 'grafs' ;
+
+style = 'xmldraw.sty' ;
+
+model = 'model' ;
+
+in = g, g ;
+
+out = H;
+
+loops = 1 ;
+
+loop_momentum = k ;
+
+options = onshell;
+
+true = vsum[ g_power, 2, 2];
+
+true = iprop[H,0,0];

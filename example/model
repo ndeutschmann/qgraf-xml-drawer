@@ -1,0 +1,16 @@
+  [ H, H, + ]
+
+  [ t, tbar, -]
+
+  [ g, g, +]
+
+  [ g, g, g; g_power = 1 ]
+  
+  [ g, g, g, g; g_power = 2 ]
+
+  [ tbar, t, g ; g_power = 1]
+
+  [ tbar, t, H ; g_power = 0]
+
+  [ H, H, H; g_power = 0]
+
